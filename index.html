@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Portfolio of Nithin Kumar Gowaravarapu, a data analyst building clear dashboards, reliable data pipelines, and practical machine learning solutions." />
+  <link rel="icon" href="data:," />
+  <title>Nithin Kumar Gowaravarapu — Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f8f7;
+      --surface: #ffffff;
+      --surface-2: #edf1ef;
+      --ink: #10221d;
+      --muted: #52665f;
+      --line: #cbd6d1;
+      --accent: #007a64;
+      --accent-strong: #005746;
+      --warm: #df6c31;
+      --nav-bg: rgba(246, 248, 247, .82);
+      --shadow: 0 18px 55px rgba(16, 34, 29, .10);
+      --canvas-bg: #e8efec;
+      --point: #007a64;
+      --point-2: #df6c31;
+      --grid: rgba(16, 34, 29, .14);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09110f;
+        --surface: #101b18;
+        --surface-2: #182521;
+        --ink: #eef8f4;
+        --muted: #a8bdb5;
+        --line: #2c4039;
+        --accent: #55d6b2;
+        --accent-strong: #8ae7cd;
+        --warm: #ff9563;
+        --nav-bg: rgba(9, 17, 15, .84);
+        --shadow: 0 18px 55px rgba(0, 0, 0, .28);
+        --canvas-bg: #0d1916;
+        --point: #55d6b2;
+        --point-2: #ff9563;
+        --grid: rgba(238, 248, 244, .13);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .skip-link { position: fixed; left: 8px; top: 8px; z-index: 100; background: var(--ink); color: var(--bg); padding: 9px 12px; transform: translateY(-160%); transition: transform .15s ease; }
+    .skip-link:focus { transform: translateY(0); }
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 40;
+      background: var(--nav-bg); backdrop-filter: blur(16px);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+    }
+    nav { max-width: 1180px; margin: 0 auto; min-height: 64px; padding: 0 28px; display: flex; align-items: center; justify-content: flex-end; gap: 28px; }
+    nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: .9rem; }
+    nav a:hover, nav a:focus-visible { color: var(--accent); }
+    .nav-cta { border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; color: var(--ink); }
+    main { overflow: hidden; }
+    .hero {
+      max-width: 1180px; min-height: min(780px, calc(100svh - 64px)); margin: 0 auto; padding: 86px 28px 68px;
+      display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 54px;
+    }
+    .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--accent); font: 500 .77rem "IBM Plex Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); }
+    h1, h2, h3 { font-family: "Manrope", sans-serif; margin: 0; letter-spacing: -.035em; }
+    h1 { font-size: clamp(3rem, 6.8vw, 6.5rem); line-height: .97; max-width: 720px; margin-top: 23px; }
+    .name-line { display: block; color: var(--accent); font-size: .48em; line-height: 1.25; letter-spacing: -.02em; margin-bottom: 9px; }
+    .hero-copy > p { max-width: 610px; color: var(--muted); font-size: clamp(1.05rem, 1.5vw, 1.28rem); margin: 28px 0 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .download-status { min-height: 24px; margin: 10px 0 0; color: var(--muted); font-size: .85rem; }
+    .download-status:empty { display: none; }
+    .download-status a { color: var(--accent-strong); font-weight: 700; }
+    .button { min-height: 48px; padding: 12px 19px; border-radius: 10px; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; border: 1px solid var(--line); background: var(--surface); }
+    .button.primary { color: #fff; background: var(--accent-strong); border-color: var(--accent-strong); }
+    @media (prefers-color-scheme: dark) { .button.primary { color: #07110e; } }
+    .button:hover, .button:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+    .button svg { width: 18px; height: 18px; }
+    .stage {
+      position: relative; min-height: 520px; border-radius: 36px 10px 36px 10px; overflow: hidden;
+      background: var(--canvas-bg); box-shadow: var(--shadow); border: 1px solid var(--line);
+      transform: perspective(1200px) rotateY(-2deg) rotateX(1deg);
+    }
+    #data-canvas { display: block; width: 100%; height: 100%; min-height: 520px; }
+    .stage-label { position: absolute; top: 22px; left: 22px; padding: 9px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); font: 500 .73rem "IBM Plex Mono", monospace; color: var(--muted); box-shadow: 0 8px 22px rgba(0,0,0,.08); }
+    .stage-readout { position: absolute; right: 22px; bottom: 22px; width: min(205px, calc(100% - 44px)); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 15px; box-shadow: 0 8px 22px rgba(0,0,0,.08); }
+    .stage-readout strong { display: block; font: 600 .78rem "IBM Plex Mono", monospace; color: var(--accent); }
+    .stage-readout span { color: var(--muted); font-size: .82rem; }
+    section { max-width: 1180px; margin: 0 auto; padding: 108px 28px; }
+    .section-heading { display: grid; grid-template-columns: .7fr 1.3fr; gap: 44px; align-items: start; margin-bottom: 50px; }
+    .section-heading h2 { font-size: clamp(2.15rem, 4vw, 4rem); line-height: 1.03; }
+    .section-heading p { color: var(--muted); max-width: 670px; font-size: 1.08rem; margin: 6px 0 0; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .metric { padding: 34px 26px; }
+    .metric + .metric { border-left: 1px solid var(--line); }
+    .metric strong { display: block; font: 700 clamp(2.2rem, 5vw, 4.1rem) "Manrope", sans-serif; letter-spacing: -.05em; color: var(--accent); }
+    .metric span { color: var(--muted); font-size: .93rem; }
+    .projects { display: grid; gap: 22px; }
+    .project { display: grid; grid-template-columns: 210px 1fr auto; gap: 30px; align-items: center; padding: 32px 0; border-top: 1px solid var(--line); }
+    .project:last-child { border-bottom: 1px solid var(--line); }
+    .project-index { color: var(--warm); font: 500 .82rem "IBM Plex Mono", monospace; }
+    .project h3 { font-size: clamp(1.45rem, 2.5vw, 2.2rem); line-height: 1.16; margin-bottom: 10px; }
+    .project p { margin: 0; color: var(--muted); max-width: 690px; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+    .project-tech span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; color: var(--muted); font: 500 .72rem "IBM Plex Mono", monospace; }
+    .project-mark { width: 86px; height: 86px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; background: var(--surface); color: var(--accent); }
+    .project-mark svg { width: 34px; height: 34px; }
+    .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; }
+    .role { position: relative; padding: 0 0 36px 30px; border-left: 1px solid var(--line); }
+    .role::before { content: ""; position: absolute; top: 8px; left: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 0 5px var(--bg); }
+    .role time { display: block; color: var(--muted); font: 500 .74rem "IBM Plex Mono", monospace; margin-bottom: 8px; }
+    .role h3 { font-size: 1.38rem; }
+    .role .company { color: var(--accent); font-weight: 700; margin: 4px 0 12px; }
+    .role p { color: var(--muted); margin: 0; }
+    .skill-board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .skill-group { background: var(--bg); padding: 28px; }
+    .skill-group h3 { font-size: 1rem; color: var(--warm); margin-bottom: 15px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 10px 16px; color: var(--muted); }
+    .skill-list span::before { content: "/"; color: var(--accent); margin-right: 7px; font-family: "IBM Plex Mono", monospace; }
+    .education { display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; align-items: stretch; }
+    .edu-main, .certs { background: var(--surface); border: 1px solid var(--line); padding: 34px; }
+    .edu-main { border-radius: 8px 28px 8px 28px; }
+    .certs { border-radius: 28px 8px 28px 8px; }
+    .edu-main h3 { font-size: 1.65rem; margin-bottom: 8px; }
+    .edu-main p, .certs p { color: var(--muted); margin: 7px 0 0; }
+    .gpa { display: inline-flex; margin-top: 22px; align-items: baseline; gap: 8px; }
+    .gpa strong { font: 700 2.4rem "Manrope", sans-serif; color: var(--accent); }
+    .gpa span { color: var(--muted); }
+    .certs h3 { font-size: 1.3rem; margin-bottom: 18px; }
+    .cert { padding: 14px 0; border-top: 1px solid var(--line); }
+    .cert strong { display: block; }
+    .cert span { color: var(--muted); font-size: .86rem; }
+    .contact { max-width: 1124px; margin-bottom: 70px; padding: 60px; color: #f4fffb; background: #063e34; border-radius: 10px 44px 10px 44px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; }
+    .contact h2 { font-size: clamp(2.2rem, 4.8vw, 4.7rem); line-height: 1; }
+    .contact p { color: #badbd0; max-width: 650px; margin: 18px 0 0; }
+    .contact .button { background: #f4fffb; color: #063e34; border-color: #f4fffb; white-space: nowrap; }
+    footer { max-width: 1180px; margin: 0 auto; padding: 0 28px 40px; color: var(--muted); font-size: .86rem; display: flex; justify-content: space-between; gap: 16px; }
+    .reveal { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; justify-content: center; gap: 17px; }
+      nav a:nth-child(2) { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 60px 20px 56px; gap: 44px; }
+      .stage { min-height: 430px; transform: none; }
+      #data-canvas { min-height: 430px; }
+      section { padding: 82px 20px; }
+      .section-heading { grid-template-columns: 1fr; gap: 18px; }
+      .project { grid-template-columns: 74px 1fr; }
+      .project-index { grid-column: 1 / -1; }
+      .project-mark { width: 68px; height: 68px; }
+      .timeline { grid-template-columns: 1fr; gap: 10px; }
+      .contact { margin-inline: 20px; padding: 44px 30px; grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      nav { min-height: 58px; }
+      nav a { font-size: .82rem; }
+      .nav-cta { padding: 7px 10px; }
+      .hero { padding-top: 45px; }
+      h1 { font-size: clamp(2.7rem, 15.5vw, 4.4rem); }
+      .stage { min-height: 370px; border-radius: 25px 8px 25px 8px; }
+      #data-canvas { min-height: 370px; }
+      .metrics { grid-template-columns: 1fr; }
+      .metric { padding: 25px 10px; }
+      .metric + .metric { border-left: 0; border-top: 1px solid var(--line); }
+      .project { grid-template-columns: 1fr; gap: 20px; }
+      .project-mark { display: none; }
+      .skill-board { grid-template-columns: 1fr; }
+      .education { grid-template-columns: 1fr; }
+      .edu-main, .certs { padding: 25px; }
+      .contact { margin-inline: 20px; padding: 38px 24px; border-radius: 8px 30px 8px 30px; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="nav-wrap">
+    <nav aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a class="nav-cta" href="mailto:ngowaravarapu@albany.edu">Get in touch</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Data analyst · Albany, New York</div>
+        <h1><span class="name-line">Nithin Kumar Gowaravarapu</span>Turning complex data into useful decisions.</h1>
+        <p>Graduate data analyst with hands-on experience building dashboards, cleaning and combining datasets, automating reports, and applying machine learning to real problems.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">Explore my work
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </a>
+          <a class="button" id="resume-download" href="data:application/octet-stream;base64,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b2JqCjw8Ci9Gb250IDw8L0YxIDUgMCBSCi9GMiA2IDAgUgovRjMgNyAwIFI+PgovUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSV0KPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MTAwODIwMTAxMFopCj4+CmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAxMDIgMDAwMDAgbiAKMDAwMDAwMDIwNSAwMDAwMCBuIAowMDAwMDAwMjg1IDAwMDAwIG4gCjAwMDAwMDIzOTIgMDAwMDAgbiAKMDAwMDAwMjQ5NCAwMDAwMCBuIAowMDAwMDAyNTkxIDAwMDAwIG4gCjAwMDAwMDI2OTYgMDAwMDAgbiAKMDAwMDAwMjgwMyAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDEwCi9Sb290IDIgMCBSCi9JbmZvIDkgMCBSCi9JRCBbPDM5NjE5QjA5OUY0MEYxMkI1NkY2OTJGQzE3MTgxMTg3PjwzOTYxOUIwOTlGNDBGMTJCNTZGNjkyRkMxNzE4MTE4Nz5dCj4+CnN0YXJ0eHJlZgoyODU4CiUlRU9GCg==" download="Nithin_Kumar_Gowaravarapu_Resume.pdf" target="_blank" rel="noopener" aria-describedby="download-status">Download résumé
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m-4-4 4 4 4-4M5 20h14"/></svg>
+          </a>
+        </div>
+        <p class="download-status" id="download-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="stage" id="stage" aria-label="Interactive three-dimensional data constellation animation">
+        <canvas id="data-canvas"></canvas>
+        <div class="stage-label">LIVE DATA MODEL / 3D</div>
+        <div class="stage-readout"><strong id="readout">72 SIGNALS</strong><span>Move your pointer to explore the data field.</span></div>
+      </div>
+    </div>
+
+    <section class="reveal" aria-labelledby="impact-title">
+      <div class="section-heading">
+        <h2 id="impact-title">Built for measurable impact.</h2>
+        <p>I pair analytical thinking with practical engineering—moving from raw data to a clear output that people can actually use.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>95%</strong><span>model accuracy on a deep-learning project</span></div>
+        <div class="metric"><strong>40%</strong><span>faster API response time during development work</span></div>
+        <div class="metric"><strong>30%</strong><span>less code duplication through reusable components</span></div>
+      </div>
+    </section>
+
+    <section id="work" class="reveal" aria-labelledby="work-title">
+      <div class="section-heading">
+        <h2 id="work-title">Selected projects</h2>
+        <p>Two projects that show how I work across modeling, software, connected hardware, and deployment.</p>
+      </div>
+      <div class="projects">
+        <article class="project">
+          <div class="project-index">CASE 01 · MACHINE LEARNING</div>
+          <div>
+            <h3>Breast Cancer Risk Prediction</h3>
+            <p>Built a convolutional neural network to predict breast cancer risk from medical images. Preprocessed the image data and deployed the trained model through a Flask web application.</p>
+            <div class="project-tech"><span>TensorFlow</span><span>Keras</span><span>OpenCV</span><span>Python</span><span>Flask</span></div>
+          </div>
+          <div class="project-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M9 31 18 20l8 7 12-15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="31" r="3" fill="currentColor"/><circle cx="18" cy="20" r="3" fill="currentColor"/><circle cx="26" cy="27" r="3" fill="currentColor"/><circle cx="38" cy="12" r="3" fill="currentColor"/></svg>
+          </div>
+        </article>
+        <article class="project">
+          <div class="project-index">CASE 02 · CONNECTED SYSTEMS</div>
+          <div>
+            <h3>Emergency Alert System</h3>
+            <p>Designed an Arduino-based emergency system with GPS tracking, SMS alerts, and buzzer activation—supporting simultaneous location monitoring and reliable emergency response.</p>
+            <div class="project-tech"><span>Arduino</span><span>GSM</span><span>GPS</span><span>Embedded systems</span></div>
+          </div>
+          <div class="project-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M24 7a13 13 0 0 0-13 13v8l-4 6h34l-4-6v-8A13 13 0 0 0 24 7Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M19 39h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <h2 id="experience-title">Experience</h2>
+        <p>Experience across analytics and full-stack development gives me a practical view of the whole data path—from collection and storage to APIs, dashboards, and decisions.</p>
+      </div>
+      <div class="timeline">
+        <article class="role">
+          <time>JUL 2025 — NOV 2025</time>
+          <h3>Data Analyst Intern</h3>
+          <div class="company">MedTourEasy</div>
+          <p>Cleaned and validated datasets, built performance dashboards, maintained tracking systems, documented workflows, and supported cross-functional data needs.</p>
+        </article>
+        <article class="role">
+          <time>APR 2024 — JUN 2025</time>
+          <h3>Full Stack Developer Intern</h3>
+          <div class="company">SmartInternz</div>
+          <p>Built Node.js APIs and backend services, worked with relational databases and multi-tier systems, and created reusable components for API-driven applications.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <h2 id="skills-title">Tools I work with</h2>
+        <p>A focused toolkit for analysis, visualization, data applications, and dependable collaboration.</p>
+      </div>
+      <div class="skill-board">
+        <div class="skill-group"><h3>Languages</h3><div class="skill-list"><span>Python</span><span>SQL</span><span>R</span><span>Java</span><span>JavaScript</span></div></div>
+        <div class="skill-group"><h3>Analysis</h3><div class="skill-list"><span>Pandas</span><span>NumPy</span><span>Data cleaning</span><span>Feature extraction</span></div></div>
+        <div class="skill-group"><h3>Visualization</h3><div class="skill-list"><span>Tableau</span><span>Power BI</span><span>Excel</span><span>Matplotlib</span></div></div>
+        <div class="skill-group"><h3>Systems</h3><div class="skill-list"><span>MySQL</span><span>MongoDB</span><span>REST APIs</span><span>Node.js</span><span>AWS</span><span>Git</span></div></div>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="education-title">
+      <div class="section-heading">
+        <h2 id="education-title">Education</h2>
+        <p>Graduate study grounded in databases, predictive modeling, machine learning, and data mining.</p>
+      </div>
+      <div class="education">
+        <div class="edu-main">
+          <h3>M.S. Information Science, Data Analytics</h3>
+          <p>University at Albany (SUNY) · Expected May 2027</p>
+          <div class="gpa"><strong>3.9</strong><span>GPA</span></div>
+        </div>
+        <div class="certs">
+          <h3>Credentials</h3>
+          <div class="cert"><strong>Artificial Intelligence</strong><span>IBM via SmartInternz · June 2025</span></div>
+          <div class="cert"><strong>Certificate of Publication</strong><span>IJIRSE · July 2024</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact reveal" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Let’s make data useful.</h2>
+        <p>I’m interested in data analytics opportunities where clear thinking, strong communication, and reliable execution matter.</p>
+      </div>
+      <a class="button" href="mailto:ngowaravarapu@albany.edu">ngowaravarapu@albany.edu
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5"/></svg>
+      </a>
+    </section>
+  </main>
+
+  <footer><span>© 2026 Nithin Kumar Gowaravarapu</span><span>Albany, New York</span></footer>
+
+  <script>
+    (function () {
+      var canvas = document.getElementById('data-canvas');
+      var stage = document.getElementById('stage');
+      var ctx = canvas.getContext('2d');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var points = [];
+      var pointer = { x: 0, y: 0, active: false };
+      var t = 0;
+
+      function colors() {
+        var s = getComputedStyle(document.documentElement);
+        return { bg: s.getPropertyValue('--canvas-bg').trim(), p1: s.getPropertyValue('--point').trim(), p2: s.getPropertyValue('--point-2').trim(), grid: s.getPropertyValue('--grid').trim() };
+      }
+      function makePoints() {
+        points = [];
+        var rings = 6, per = 12;
+        for (var r = 0; r < rings; r++) {
+          for (var i = 0; i < per; i++) {
+            var phi = (i / per) * Math.PI * 2 + r * .34;
+            var theta = ((r + .5) / rings - .5) * Math.PI;
+            points.push({
+              x: Math.cos(theta) * Math.cos(phi),
+              y: Math.sin(theta),
+              z: Math.cos(theta) * Math.sin(phi),
+              pulse: Math.random() * Math.PI * 2
+            });
+          }
+        }
+      }
+      function size() {
+        var rect = stage.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(rect.width * dpr);
+        canvas.height = Math.round(rect.height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      function project(p, ax, ay, w, h) {
+        var cy = Math.cos(ay), sy = Math.sin(ay), cx = Math.cos(ax), sx = Math.sin(ax);
+        var x1 = p.x * cy - p.z * sy;
+        var z1 = p.x * sy + p.z * cy;
+        var y1 = p.y * cx - z1 * sx;
+        var z2 = p.y * sx + z1 * cx;
+        var scale = Math.min(w, h) * .29;
+        var perspective = 1.25 / (1.8 + z2 * .42);
+        return { x: w * .5 + x1 * scale * perspective, y: h * .48 + y1 * scale * perspective, z: z2, s: perspective };
+      }
+      function draw() {
+        var w = canvas.clientWidth, h = canvas.clientHeight, c = colors();
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = c.bg; ctx.fillRect(0, 0, w, h);
+        var ay = t * .00032 + (pointer.active ? pointer.x * .45 : 0);
+        var ax = -.2 + (pointer.active ? pointer.y * .28 : 0);
+        var projected = points.map(function (p) { return project(p, ax, ay, w, h); });
+
+        ctx.lineWidth = 1;
+        for (var i = 0; i < projected.length; i++) {
+          for (var j = i + 1; j < projected.length; j++) {
+            var dx = projected[i].x - projected[j].x, dy = projected[i].y - projected[j].y;
+            var d = Math.sqrt(dx*dx + dy*dy);
+            if (d < Math.min(w,h) * .18) {
+              ctx.globalAlpha = Math.max(0, .35 - d / (Math.min(w,h) * .52));
+              ctx.strokeStyle = c.grid;
+              ctx.beginPath(); ctx.moveTo(projected[i].x, projected[i].y); ctx.lineTo(projected[j].x, projected[j].y); ctx.stroke();
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+        var order = projected.map(function(p, i){ return {p:p, i:i}; }).sort(function(a,b){ return a.p.z - b.p.z; });
+        order.forEach(function (item) {
+          var p = item.p, original = points[item.i];
+          var pulse = reduced ? 0 : Math.sin(t * .002 + original.pulse) * .8;
+          var radius = 2.4 + p.s * 3 + pulse;
+          ctx.globalAlpha = .55 + p.s * .28;
+          ctx.fillStyle = item.i % 9 === 0 ? c.p2 : c.p1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(1.8, radius), 0, Math.PI * 2); ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+        if (!reduced) { t += 16; requestAnimationFrame(draw); }
+      }
+      stage.addEventListener('pointermove', function (e) {
+        var r = stage.getBoundingClientRect();
+        pointer.x = (e.clientX - r.left) / r.width - .5;
+        pointer.y = (e.clientY - r.top) / r.height - .5;
+        pointer.active = true;
+      });
+      stage.addEventListener('pointerleave', function () { pointer.active = false; });
+      window.addEventListener('resize', function () { size(); if (reduced) draw(); });
+      makePoints(); size(); draw();
+
+      var resumeLink = document.getElementById('resume-download');
+      var downloadStatus = document.getElementById('download-status');
+      var resumePath = resumeLink.getAttribute('href');
+      var resumeBlobUrl = '';
+
+      fetch(resumePath).then(function (response) {
+        if (!response.ok) throw new Error('Resume unavailable');
+        return response.blob();
+      }).then(function (blob) {
+        resumeBlobUrl = URL.createObjectURL(blob);
+      }).catch(function () {
+        resumeBlobUrl = '';
+      });
+
+      resumeLink.addEventListener('click', function (event) {
+        if (resumeBlobUrl) {
+          event.preventDefault();
+          var download = document.createElement('a');
+          download.href = resumeBlobUrl;
+          download.download = 'Nithin_Kumar_Gowaravarapu_Resume.pdf';
+          document.body.appendChild(download);
+          download.click();
+          download.remove();
+          downloadStatus.textContent = 'Download requested. Check your Downloads folder.';
+        } else {
+          downloadStatus.textContent = 'Opening the résumé PDF. Use the download button in the PDF viewer.';
+        }
+      });
+
+      window.addEventListener('pagehide', function () {
+        if (resumeBlobUrl) URL.revokeObjectURL(resumeBlobUrl);
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
